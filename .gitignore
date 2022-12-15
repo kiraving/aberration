@@ -1,0 +1,9 @@
+.ipynb_checkpoints
+.spyproject
+*/*/.ipynb_checkpoints
+*/__pycache__
+*/.idea
+images
+output_images
+experiments
+
