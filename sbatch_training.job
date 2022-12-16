@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -J tr999
+#SBATCH -t 399:00:00
+#SBATCH -n 1
+#SBATCH -o trainingci.out
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --mem-per-cpu=8000
+
+
+source /phase/bin/activate
+
+python ./trainCellimage.py -z 3,5,6,7,8,9,10,11,12,13,14 -steps=5 -b 2 -ep 50000 --jitter 1 --max_jitter 9,9,9 --crop_shape 32 --range 0.075 -lr 0.0003 --zernike_order ansi --noise_mean 5,7 --noise_sigma 1.5,3 --noise_snr 21,34 -unitsxy 0.068519 -psf_lam 0.488 -ph '../4wk-ly17-manual.tif' 
+
+#-ph '../red_crop64.tif' -ph '../ly17_crop50.tif' 
+
+
