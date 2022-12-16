@@ -8,6 +8,14 @@ import numpy as np
 from sklearn import metrics
 from datetime import datetime
 
+def crop_center(img, accepted_shape):
+    z, y, x = img.shape
+    cropz, cropy, cropx = accepted_shape
+    startx = x // 2 - (cropx // 2)
+    starty = y // 2 - (cropy // 2)
+    startz = z // 2 - (cropz // 2)
+    return img[startz:startz + cropz, starty:starty + cropy, startx:startx + cropx]
+
 def single_mode(test_mode,model,amp_range=0.075,jitter='default',phantom='default'):
     amps = dict(zip([test_mode], [amp_range]))
     if jitter=='default':
